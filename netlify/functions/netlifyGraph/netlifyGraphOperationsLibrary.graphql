@@ -1,0 +1,19 @@
+
+
+query ExampleQuery($owner: String!, $name: String!, $first: Int!) @netlify(id: """bb016f56-4e33-4ea7-b239-1fa3686efd5a""", doc: """List GitHub Issues""") {
+  gitHub {
+    repository(name: $name, owner: $owner) {
+      issues(states: OPEN, first: $first) {
+        nodes {
+          author {
+            login
+          }
+          id
+          title
+          url
+          bodyHTML
+        }
+      }
+    }
+  }
+}
